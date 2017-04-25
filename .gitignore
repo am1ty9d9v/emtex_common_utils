@@ -1,0 +1,7 @@
+dist/*
+emtex_common_utils.egg-info/*
+Django-*.egg
+*.pyc
+docs/_build/
+.idea/
+.eggs/
