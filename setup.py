@@ -29,7 +29,7 @@ setup(
     long_description=long_description,
     author='Amit Yadav',
     author_email='amityadav@amityadav.in',
-    maintainer='am1ty9d9v',
+    maintainer='am1tyadava',
     url='https://github.com/am1tyadava/emtex_common_utils',
     packages=find_packages(exclude=['tests*']),
     install_requires=['Django>=1.6'],
