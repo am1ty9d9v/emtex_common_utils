@@ -70,7 +70,7 @@ class BaseLogModel(BaseModel):
     """
     object_id = models.CharField(max_length=11)
     column_name = models.CharField(max_length=255)
-    column_old_value = models.CharField(max_length=255)
+    column_old_value = models.CharField(max_length=255, null=True)
     column_new_value = models.CharField(max_length=255)
 
     class Meta:
