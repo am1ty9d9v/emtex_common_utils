@@ -38,7 +38,9 @@ class BaseModel(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.created_date = datetime.now()
+            self.created_by = get_current_user()
         self.modified_date = datetime.now()
+        self.modified_by = get_current_user()
         self.log_changes()
         return super(BaseModel, self).save(*args, **kwargs)
 
@@ -71,7 +73,7 @@ class BaseLogModel(BaseModel):
     object_id = models.CharField(max_length=11)
     column_name = models.CharField(max_length=255)
     column_old_value = models.CharField(max_length=255, null=True)
-    column_new_value = models.CharField(max_length=255)
+    column_new_value = models.CharField(max_length=255, null=True)
 
     class Meta:
         abstract = True
