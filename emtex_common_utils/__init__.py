@@ -9,6 +9,5 @@ def get_current_user():
     return getattr(__thread_locals, 'emtex_user', 'AnonymousUser')
 
 
-    def set_current_user(user_email):
-        setattr(__thread_locals, 'emtex_user', user_email)
-
+def set_current_user(user_email):
+    setattr(__thread_locals, 'emtex_user', user_email)

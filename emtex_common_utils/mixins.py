@@ -1,4 +1,3 @@
-
 class BaseModelMixin(object):
     def __init__(self, *args, **kwargs):
         super(BaseModelMixin, self).__init__(*args, **kwargs)
@@ -20,7 +19,7 @@ class BaseModelMixin(object):
         return False
 
     def get_old_value(self, field_name):
-      	original_name = '__original_%s' % field_name
+        original_name = '__original_%s' % field_name
         try:
             return getattr(self, original_name)
         except AttributeError:
@@ -28,6 +27,3 @@ class BaseModelMixin(object):
 
     def get_new_value(self, field_name):
         return getattr(self, field_name)
-
-
-

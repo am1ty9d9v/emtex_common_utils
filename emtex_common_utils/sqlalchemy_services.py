@@ -28,4 +28,3 @@ def run_db_query(sql):
     """
     with connect_sqlalchemy() as conn:
         return conn.execute(sql)
-

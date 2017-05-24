@@ -3,8 +3,8 @@ from datetime import datetime
 import django.db.models.options as options
 from django.db import models
 
-from .manager import BaseManager
 from . import get_current_user
+from .manager import BaseManager
 
 options.DEFAULT_NAMES = options.DEFAULT_NAMES + ('log_fields', 'log_model_name',)
 
@@ -77,4 +77,3 @@ class BaseLogModel(BaseModel):
 
     class Meta:
         abstract = True
-
