@@ -1,0 +1,2 @@
+SQLAlchemy==1.1.10
+django==1.6.10

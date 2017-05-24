@@ -3,8 +3,8 @@ from datetime import datetime
 import django.db.models.options as options
 from django.db import models
 
-from middleware import get_current_user
 from .manager import BaseManager
+from . import get_current_user
 
 options.DEFAULT_NAMES = options.DEFAULT_NAMES + ('log_fields', 'log_model_name',)
 
@@ -36,7 +36,7 @@ class BaseModel(models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        if not self.id:
+        if not self.pk:
             self.created_date = datetime.now()
             self.created_by = get_current_user()
         self.modified_date = datetime.now()
@@ -45,6 +45,8 @@ class BaseModel(models.Model):
         return super(BaseModel, self).save(*args, **kwargs)
 
     def log_changes(self):
+        if not self.pk:
+            return
         try:
             fields = self._meta.log_fields
             model_name = self._meta.log_model_name
@@ -52,18 +54,16 @@ class BaseModel(models.Model):
             pass
         else:
             for field in fields:
-                old_value = self.old_values.get(field)
-                new_value = getattr(self, field)
-                if old_value != new_value:
+                if self.has_changed(field):
                     model_name.objects.create(
                         object_id=self.id,
                         column_name=field,
-                        column_old_value=old_value,
-                        column_new_value=new_value,
+                        column_old_value=self.get_old_value(field),
+                        column_new_value=self.get_new_value(field),
                         modified_by=get_current_user(),
                         created_by=get_current_user(),
                     )
-                    self.old_values[field] = new_value
+                    setattr(self, '__original_%s' % field, self.get_new_value(field))
 
 
 class BaseLogModel(BaseModel):
