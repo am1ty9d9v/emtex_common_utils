@@ -1,4 +1,4 @@
-from . import set_current_user
+from emtex_common_utils import set_current_user
 
 
 class GetCurrentUserMiddleware(object):
