@@ -16,8 +16,11 @@ Quick start
         'emtex_common_utils',
     ]
 
-2. Include the polls URLconf in your project urls.py like this::
 
-    url(r'^emtex-common-utils/', include('emtex-common-utils.urls')),
+Things available
+-----------
 
-3. Run `python manage.py migrate` to create the emtex_common_utils models.
+1. Database Migrations::
+
+    python manage.py emtex_migrate --for_date="YYYY-MM-DD"
+
