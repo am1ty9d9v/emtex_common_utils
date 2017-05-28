@@ -6,7 +6,7 @@ from django.db import models
 from . import get_current_user
 from .manager import BaseManager
 
-options.DEFAULT_NAMES = options.DEFAULT_NAMES + ('log_fields', 'log_model_name',)
+options.DEFAULT_NAMES += 'log_fields', 'log_model_name',
 
 
 class BaseModel(models.Model):
