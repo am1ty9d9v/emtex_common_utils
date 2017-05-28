@@ -24,3 +24,26 @@ Things available
 
     python manage.py emtex_migrate --for_date="YYYY-MM-DD"
 
+2. Logging::
+
+    from emtex_common_utils.models import BaseModel, BaseLogModel
+    from emtex_common_utils.mixins import BaseModelMixin
+
+    ...
+
+
+    class MyModelLog(BaseLogModel):
+        """ Model to log changes for model MyModel """
+        pass
+
+
+    class MyModel(BaseModel, BaseModelMixin):
+        """ Model which changes needs to be tracked. """
+
+        class Meta:
+            log_fields = (
+                my_field1, my_field2,
+                ...
+            )
+            log_model_name = MyModelLog
+
