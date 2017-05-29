@@ -1,10 +1,21 @@
-=====
+==================
 Emtex Common Utils
-=====
+==================
 
 This contains utility like permissions, audit log etc.
 
 Detailed documentation is in the "docs" directory.
+
+How to install
+--------------
+
+1. Using pip::
+
+    pip install emtex_common_utils==0.3
+        or
+    Add emtex_common_utils==0.3 in your requirements.txt file and then run:
+    pip install -r requirements.txt
+
 
 Quick start
 -----------
@@ -18,7 +29,7 @@ Quick start
 
 
 Things available
------------
+----------------
 
 1. Database Migrations::
 
