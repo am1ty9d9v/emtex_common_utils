@@ -1,6 +1,6 @@
 from threading import local
 
-__version__ = '0.3'
+__version__ = '0.4'
 
 __thread_locals = local()
 
