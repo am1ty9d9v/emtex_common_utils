@@ -57,4 +57,4 @@ Detailed documentation is in the "docs" directory.
 * obj.get_old_value(field_name)
 * obj.get_new_value(field_name)
 
-P.S. `obj` here is the `MyModel` instance
+P.S. `obj` here is the `MyModel` instance and `field_name` must be any field that is defined in `log_fields` in class `Meta` of model `MyModel`
