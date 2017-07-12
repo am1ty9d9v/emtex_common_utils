@@ -51,3 +51,10 @@ Detailed documentation is in the "docs" directory.
                    ...
                )
                log_model_name = MyModelLog
+               
+3: Handler functions inside `BaseModelMixin` that you can use to track changes:
+* obj.has_changed(field_name)
+* obj.get_old_value(field_name)
+* obj.get_new_value(field_name)
+
+P.S. `obj` here is the `MyModel` instance
