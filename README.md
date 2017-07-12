@@ -51,10 +51,20 @@ Detailed documentation is in the "docs" directory.
                    ...
                )
                log_model_name = MyModelLog
-               
-3: Handler functions inside `BaseModelMixin` that you can use to track changes:
+  
+  
+3. Handler functions inside `BaseModelMixin` that you can use to track changes:
 * obj.has_changed(field_name)
 * obj.get_old_value(field_name)
 * obj.get_new_value(field_name)
 
 P.S. `obj` here is the `MyModel` instance and `field_name` must be any field that is defined in `log_fields` in class `Meta` of model `MyModel`
+
+4. Run raw SQL query using `sqlalchemy`.
+
+       from emtex_common_utils.sqlalchemy_services import run_db_query
+       sql_query = """
+           select field_name1, field_name2 from some_database.some_model
+               where some_field = 'some value'
+       """
+       results = run_db_query(sql_query)
