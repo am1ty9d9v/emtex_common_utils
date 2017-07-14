@@ -51,16 +51,21 @@ Detailed documentation is in the "docs" directory.
                    ...
                )
                log_model_name = MyModelLog
-  
+               
+    ** Note
+    To track foreign key, you need to pass the foreign key name or related_name if related_name is defined.
+    
   
 3. Handler functions inside `BaseModelMixin` that you can use to track changes:
-* obj.has_changed(field_name)
-* obj.get_old_value(field_name)
-* obj.get_new_value(field_name)
 
-P.S. `obj` here is the `MyModel` instance and `field_name` must be any field that is defined in `log_fields` in class `Meta` of model `MyModel`
+    * obj.has_changed(field_name)
+    * obj.get_old_value(field_name)
+    * obj.get_new_value(field_name)
 
-4. Run raw SQL query using `sqlalchemy`.
+    P.S. `obj` here is the `MyModel` instance and `field_name` must be any field that is defined in `log_fields` in class `Meta` of model `MyModel`.
+    
+    
+4. Run raw SQL query using sqlalchemy.
 
        from emtex_common_utils.sqlalchemy_services import run_db_query
        sql_query = """
